@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 import subprocess
 
 
@@ -31,9 +29,7 @@ def create_multiline_pass_entry(website, user_type):
         multiline_entry = f"{password}\nURL: {url}\nUsername: {username}"
 
         # Generate the command to insert the multiline entry into pass
-        insert_command = (
-            f'echo "{multiline_entry}" | pass insert --multiline {website}/{user_type}'
-        )
+        insert_command = f'echo "{multiline_entry}" | pass insert --multiline {website}/{user_type}'
         subprocess.run(insert_command, shell=True, check=True)
         print("Password entry created successfully.")
     except subprocess.CalledProcessError:
